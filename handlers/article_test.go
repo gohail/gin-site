@@ -1,11 +1,9 @@
-package main
+package handlers
 
 import (
 	"testing"
 )
 
-
-
-func TestShowIndexPageUnauthenticated (t *testing.T){
+func TestShowIndexPageUnauthenticated(t *testing.T) {
 
 }

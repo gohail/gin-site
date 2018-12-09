@@ -1,6 +1,8 @@
 package main
 
 import (
+	"github.com/andreyberezin/gin-site/handlers"
+	"github.com/andreyberezin/gin-site/middlewere"
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -10,6 +12,31 @@ import (
 func initializeRoutes() {
 	router.GET("/", showIndexPage)
 	router.GET("/article/view/:article_id", getArticleByID)
+
+	userRoutes := router.Group("/u")
+	{
+		// Handle the GET requests at /u/login
+		// Show the login page
+		// Ensure that the user is not logged in by using the middleware
+		userRoutes.GET("/login", middlewere.EnsureNotLoggedIn(), handlers.ShowLoginPage)
+
+		// Handle POST requests at /u/login
+		// Ensure that the user is not logged in by using the middleware
+		userRoutes.POST("/login", middlewere.EnsureNotLoggedIn(), handlers.PerformLogin)
+
+		// Handle GET requests at /u/logout
+		// Ensure that the user is logged in by using the middleware
+		userRoutes.GET("/logout", middlewere.EnsureLoggedIn(), handlers.Logout)
+
+		// Handle the GET requests at /u/register
+		// Show the registration page
+		// Ensure that the user is not logged in by using the middleware
+		userRoutes.GET("/register", middlewere.EnsureNotLoggedIn(), handlers.ShowRegistrationPage)
+
+		// Handle POST requests at /u/register
+		// Ensure that the user is not logged in by using the middleware
+		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
+	}
 }
 
 func showIndexPage(context *gin.Context) {
