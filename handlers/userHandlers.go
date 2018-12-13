@@ -4,7 +4,6 @@ import (
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
 )
 
@@ -47,16 +46,14 @@ func PerformLogin(context *gin.Context) {
 func Logout(context *gin.Context) {
 	// Clear the cookie
 	session := sessions.Default(context)
-	user := session.Get("user-id")
-	if user == nil {
+	session.Delete("user-id")
+	err := session.Save()
+	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error": "Invalid session token"})
-	} else {
-		log.Println(user)
-		session.Delete("user-id")
-		session.Save()
-		// Redirect to the home page
-		context.Redirect(http.StatusTemporaryRedirect, "/")
+		return
 	}
+	// Redirect to the home page
+	context.Redirect(http.StatusTemporaryRedirect, "/")
 }
 
 func ShowRegistrationPage(context *gin.Context) {
@@ -79,9 +76,10 @@ func Register(context *gin.Context) {
 		session.Set("user-id", username)
 		err := session.Save()
 		if err != nil {
-			context.HTML(http.StatusBadRequest, "register.html", gin.H{
-				"ErrorTitle":   "Login Failed",
-				"ErrorMessage": "Failed to generate session token"})
+			context.HTML(http.StatusBadRequest, "register.html",
+				gin.H{
+					"ErrorTitle":   "Login Failed",
+					"ErrorMessage": "Failed to generate session token"})
 		} else {
 			context.HTML(http.StatusOK, "login-successful.html",
 				gin.H{
@@ -96,6 +94,5 @@ func Register(context *gin.Context) {
 			gin.H{
 				"ErrorTitle":   "Registration Failed",
 				"ErrorMessage": err.Error()})
-
 	}
 }

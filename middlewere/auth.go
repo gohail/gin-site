@@ -16,7 +16,9 @@ func EnsureLoggedIn() gin.HandlerFunc {
 		user := session.Get("user-id")
 		if user == nil {
 			//context.JSON(http.StatusBadRequest, gin.H{"error": "Already logged"})
-			context.AbortWithStatus(http.StatusUnauthorized)
+			context.HTML(http.StatusBadRequest, "login.html", gin.H{
+				"ErrorTitle":   "Login Failed",
+				"ErrorMessage": "please login"})
 		}
 		//c.AbortWithStatus(http.StatusUnauthorized)
 	}

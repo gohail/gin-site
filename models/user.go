@@ -6,25 +6,20 @@ import (
 )
 
 type User struct {
-	UserName string `json:"username"`
-	Password string `json:"password"`
-}
+	Model
 
-var userList = []User{
-	{"user1", "pass1"},
-	{"user2", "pass2"},
-	{"user3", "pass3"},
-	{"user4", "pass4"},
-	{"admin", "admin"},
+	UserName string `form:"name"`
+	Password string `form:"password"`
 }
 
 func IsUserValid(name, password string) bool {
-	for _, u := range userList {
-		if u.UserName == name && u.Password == password {
-			return true
-		}
+	db := GetBD()
+	u := User{}
+	db.Where("user_name = ? AND password = ?", name, password).First(&u)
+	if u.ID == 0 {
+		return false
 	}
-	return false
+	return true
 }
 
 func RegisterNewUser(username, password string) (*User, error) {
@@ -34,17 +29,22 @@ func RegisterNewUser(username, password string) (*User, error) {
 	if !isUserNameAvailable(username) {
 		return nil, errors.New("The username isn't available")
 	}
-
-	u := User{username, password}
-	userList = append(userList, u)
+	db := GetBD()
+	u := User{}
+	u.UserName = username
+	u.Password = password
+	if err := db.Create(&u).Error; err != nil {
+		return nil, errors.New("Error whilst registering user")
+	}
 	return &u, nil
 }
 
 func isUserNameAvailable(username string) bool {
-	for _, u := range userList {
-		if u.UserName == username {
-			return false
-		}
+	db := GetBD()
+	user := User{}
+	db.Where("user_name = ?", username).First(&user)
+	if user.ID != 0 {
+		return false
 	}
 	return true
 }
