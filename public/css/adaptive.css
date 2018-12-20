@@ -1,0 +1,46 @@
+/*
+!*перестройка для экранов-----------------------------------------------------*!
+@media only screen and (min-width : 991px) {
+    .page-product_wrap-product:nth-child(4n) .page-product_wrap-product-item{ border:none; }
+}
+@media only screen and (min-width : 767px) and (max-width : 991px) {
+    .page-product_wrap-product:nth-child(3n) .page-product_wrap-product-item{ border:none; }
+}
+@media only screen and  (max-width : 767px) {
+    !*.page-product_wrap-product:nth-child(1n) .page-product_wrap-product-item{ border:none; }*!
+    .page-product_wrap-product-item{ border:none; }
+}
+!*@media only screen  and (max-width : 350px) {*!
+    !*.page-product_wrap-product:nth-child(1n) .page-product_wrap-product-item{ border:none; }*!
+!*}*!
+
+*/
+
+
+
+
+@media screen and (max-width: 1199px) {
+    .d-none-1199{display: none;}
+
+}
+
+@media screen and (max-width: 991px) {
+    .d-none-991{display: none;}
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 575px){
+
+}
+
+@media screen and (max-width: 550px) {
+    .d-none-550{ display: none;}
+    .container{ padding-left: 0; padding-right: 0;}
+}
+@media screen and (max-width: 385px) { }
+@media screen and (max-width: 350px) { }
+
+

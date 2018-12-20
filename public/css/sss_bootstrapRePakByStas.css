@@ -1,0 +1,219 @@
+
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=cyrillic,cyrillic-ext'); */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700');
+
+body{font-family: 'Fira Sans', sans-serif; }
+
+
+/* шрифты закончилися-----------------------------------------------------------------------------------------*/
+
+/* Параметры для основных атрибутов ------------------------------------------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}
+body {line-height: normal;}
+ol, ul {//list-style: none;}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {	content: '';content: none;}
+table {	border-collapse: collapse;	border-spacing: 0;}
+
+body{
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 160%;
+	letter-spacing: normal;
+	color: #333333;
+	margin: 0 auto;
+	/* это свойство зглаживает шрифт */
+	-webkit-font-smoothing: antialiased;
+	/* можно скролить с помощю тачскрина, если будет деогаться возможно удалить строку */
+	-webkit-overflow-scrolling: touch;
+
+}
+
+h1, h2, h3, h4, h5, h6 { font-size:inherit;line-height: inherit; margin-bottom: inherit; display: inline-block; }
+
+
+p { }
+a {	outline: none; /* Убираем границу вокруг ссылок  */ }
+a:link{  }
+a:hover { }
+hr{  border-top: 1px solid rgb(201, 201, 201);}
+/* Основные стандартные стили закончились ------------------------------------------------ */
+/* Вспомогательные классы ---------------------------------------------------------------*/
+.text_centered{ text-align: center; margin:auto;}
+.center-block {	display: block; margin-left: auto; margin-right: auto;}
+.bg-centered{
+	background-position: center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+
+
+
+.row{ margin:0; } /*обрезаем клвсс бутстрапа*/
+
+/* Вспомогательные классы закончились---------------------------------------------------*/
+
+/*	ЗАДАЕМ ОСНОВНЫЕ ЦВЕТА ----------------------------------------------------------------*/
+:root{
+	/*градации серого*/
+	--color-black: #000000;
+	--color-darker-gray: #080808 ;
+	--color-dark-gray: #181818;
+	--color-gray: #404040;
+	--color-light-gray: #B0B0B0;
+	--color-lighter-gray: #E8E8E8;
+	--color-white:  #FFFFFF;
+
+	/*фирменные цвета*/
+	--primary:#1e3143;
+	--success:#ff6363;
+	--info:#3c6590;   
+	/* --warning:#f0ad4e; */
+	/* --danger: #FE2E2E; */
+}
+
+.bg-primary	{ background-color: var(--primary);}
+.bg-success	{ background-color: var(--success);}
+.bg-info	{ background-color: var(--info);}
+.bg-warning	{ background-color: var(--warning);}
+.bg-danger	{ background-color: var(--danger);}
+
+.text-primary	{ color:var(--primary);}
+.text-success	{ color:var(--success);}
+.text-info		{ color:var(--info);}
+.text-warning	{ color:var(--warning);}
+.text-danger	{ color:var(--danger);}
+.text-white		{ color:white;}
+
+.bg-black			{ background-color: var(--color-black);}
+.bg-dark-gray		{ background-color: var(--color-dark-gray);}
+.bg-darker-gray		{ background-color: var(--color-darker-gray);}
+.bg-gray			{ background-color: var(--color-gray);}
+.bg-light-gray		{ background-color: var(--color-light-gray);}
+.bg-lighter-gray	{ background-color: var(--color-lighter-gray);}
+.bg-white			{ background-color: var(--color-white);}
+
+.text-black			{ color:var(--color-black);}
+.text-darker-gray	{ color:var(--color-darker-gray);}
+.text-dark-gray		{ color:var(--color-dark-gray);}
+.text-gray			{	color:var(--color-gray);}
+.text-light-gray	{ color:var(--color-light-gray);}
+.text-lighter-gray	{	color:var(--color-lighter-gray);}
+.text-white			{ color:var(--color-white);}
+
+/* Цвета законцились -----------------------------------------------------------------------------*/
+/* кнопки ------------------------------------------------------------------------------------------*/
+
+.btn{
+
+}
+.btn:active {
+
+
+}
+.btn-default {
+
+}
+.btn-default:hover {
+
+}
+.btn-info{
+
+}
+.btn-info:hover{
+
+}
+/* кнопки закончились-------------------------------------------------------------------------------- */
+/*Нав бар переопределение стилей------------------------------------------------------------------*/
+nav {
+	border-radius: 0;
+	border: none;
+	//margin-bottom: 0;
+	//position: fixed; /* приклеить к потолку */
+	left: 0;
+	right: 0;
+	//z-index: 1000;
+}
+.navbar{
+	border-radius: 0; 
+	border: none;
+    margin-bottom: 0;
+	//position: fixed; /* приклеить к потолку */
+    left: 0;
+    right: 0;
+    top: 0;
+    //z-index: 1000;
+
+}
+.nav > li > a{
+	//color: #ffffff;
+	//font-weight: 500;
+	//font-size:26pt;
+	//padding: 17px;
+}
+.nav > li > a:hover, 
+.nav > li > a:focus {  }
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+
+}
+.nav > .active > a {
+
+}
+.languagesss > .active {
+
+}
+.dropdown-menu {
+
+	border:none;
+	border-radius: 0;
+
+	//box-shadow: none;
+}
+.dropdown-menu > li > a{
+
+}
+.open > .dropdown-menu{
+
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+
+}
+
+/*кнопка схлопывания меню*/
+.icon-bar{ }
+.navbar-toggle{  }
+.navbar-toggle:hover{  }
+/*кнопка схлопывания меню закончилась*/
+
+/*Нав бар переопределение стилей закончился------------------------------------------------------------------*/
+
+/*Штука для нормальных переносов строк с бекгроундом*/
+.brake-spase-words {
+	-webkit-box-decoration-break: clone;
+	-o-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.animateMainText3{opacity: 0;}

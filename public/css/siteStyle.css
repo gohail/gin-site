@@ -1,0 +1,10 @@
+.navbar {padding: 0;}
+.btn{border-radius: 0;}
+.btn-my-cabinet{
+    background-color: #ff3d00;
+    color: #ffffff;
+    font-weight:500;
+    font-size: 100%;
+}
+.btn-my-cabinet:hover{background-color: #ea3400;}
+.btn-my-cabinet:active{background-color: #811f00;}
