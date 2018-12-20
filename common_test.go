@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-var tmpArticleList [] models.Article
+var tmpArticleList []models.Article
 
 // This function is used for setup before executing the test functions
 func TestMain(m *testing.M) {
@@ -24,12 +24,12 @@ func getRouter(withTemplates bool) *gin.Engine {
 	r := gin.Default()
 
 	if withTemplates {
-		r.LoadHTMLGlob("templates/*")
+		r.LoadHTMLGlob("view/*")
 	}
 	return r
 }
 
-func testHTTPResponce(t *testing.T, r *gin.Engine, req *http.Request, f func (w *httptest.ResponseRecorder) bool){
+func testHTTPResponce(t *testing.T, r *gin.Engine, req *http.Request, f func(w *httptest.ResponseRecorder) bool) {
 	// Create a response recorder
 	w := httptest.NewRecorder()
 
