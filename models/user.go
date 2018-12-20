@@ -7,9 +7,10 @@ import (
 
 type User struct {
 	Model
-
 	UserName string `form:"name"`
 	Password string `form:"password"`
+
+	Adverts []Advert `gorm:"ForeignKey:UserID"` // One-To-Many relationship
 }
 
 func IsUserValid(name, password string) bool {
