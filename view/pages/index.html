@@ -1,0 +1,10 @@
+<!--index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<!--Loop over the `payload` variable, which is the list of articles-->
+{{template "home.html" .}}
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

@@ -4,6 +4,7 @@ import (
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/andreyberezin/gin-site/system"
 	"github.com/gin-gonic/contrib/sessions"
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,9 +16,10 @@ func main() {
 	models.AutoMigrate()
 
 	router = gin.Default()
+	router.Use(static.Serve("/public", static.LocalFile("./public", true)))
 	store := sessions.NewCookieStore([]byte("secret"))
 	router.Use(sessions.Sessions("gosession", store))
-	router.LoadHTMLGlob("view/*")
+	router.LoadHTMLGlob("view/*/*.html")
 
 	initializeRoutes()
 
