@@ -18,7 +18,7 @@ type Model struct {
 var db *gorm.DB
 
 //SetDB establishes connection to database and saves its handler into db *sqlx.DB
-func SetDB(connection string){
+func SetDB(connection string) {
 	var err error
 	fmt.Println(connection)
 	db, err = gorm.Open("postgres", connection)
@@ -28,11 +28,11 @@ func SetDB(connection string){
 }
 
 //GetDB returns database handler
-func GetBD() *gorm.DB{
+func GetBD() *gorm.DB {
 	return db
 }
 
 //AutoMigrate runs gorm auto migration
 func AutoMigrate() {
-	db.AutoMigrate(&User{})
+	db.AutoMigrate(&User{}, &Advert{})
 }
