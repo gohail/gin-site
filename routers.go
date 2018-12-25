@@ -1,17 +1,15 @@
 package main
 
 import (
+	"github.com/andreyberezin/gin-site/controllers"
 	"github.com/andreyberezin/gin-site/handlers"
 	"github.com/andreyberezin/gin-site/middlewere"
-	"github.com/andreyberezin/gin-site/models"
-	"github.com/gin-gonic/gin"
-	"net/http"
-	"strconv"
 )
 
 func initializeRoutes() {
-	router.GET("/", showIndexPage)
-	router.GET("/article/view/:article_id", getArticleByID)
+
+	// Handle the GET requests at /
+	router.GET("/", controllers.GetHome)
 
 	userRoutes := router.Group("/u")
 	{
@@ -37,33 +35,19 @@ func initializeRoutes() {
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
 	}
-}
 
-func showIndexPage(context *gin.Context) {
-	context.HTML(
-		http.StatusOK,
-		"index.html",
-		gin.H{
-			"title":   "Home Page",
-			"payload": models.GetAllArticles(),
-		},
-	)
-}
+	advertRoutes := router.Group("/adverts")
+	{
+		// Handle GET requests at /adverts/all
+		advertRoutes.GET("/all", controllers.GetAllAdverts)
 
-func getArticleByID(context *gin.Context) {
-	if ID, err := strconv.Atoi(context.Param("article_id")); err == nil {
-		if article, err := models.GetArticleByID(ID); err == nil {
-			context.HTML(
-				http.StatusOK,
-				"article.html",
-				gin.H{
-					"payload": article,
-				},
-			)
-		} else {
-			context.AbortWithError(http.StatusNotFound, err)
-		}
-	} else {
-		context.AbortWithStatus(http.StatusNotFound)
+		// Handle GET requests at /adverts/:id
+		advertRoutes.GET("/:id", controllers.AdvertGet)
+
+		// Handle GET requests /adverts/new_adv
+		advertRoutes.GET("/new_adv")
+
+		// Handle POST requests /adverts/new_adv
+		advertRoutes.POST("/new_adv")
 	}
 }
