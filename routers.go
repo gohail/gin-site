@@ -36,18 +36,18 @@ func initializeRoutes() {
 		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
 	}
 
-	advertRoutes := router.Group("/adverts")
+	advertRoutes := router.Group("/baraholka")
 	{
 		// Handle GET requests at /adverts/all
 		advertRoutes.GET("/all", controllers.GetAllAdverts)
 
 		// Handle GET requests at /adverts/:id
-		advertRoutes.GET("/:id", controllers.AdvertGet)
+		advertRoutes.GET("/show/:id", controllers.AdvertGet)
 
 		// Handle GET requests /adverts/new_adv
-		advertRoutes.GET("/new_adv")
+		//advertRoutes.GET("/new_adv")
 
 		// Handle POST requests /adverts/new_adv
-		advertRoutes.POST("/new_adv")
+		//advertRoutes.POST("/new_adv")
 	}
 }
