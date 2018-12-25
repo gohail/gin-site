@@ -1,0 +1,108 @@
+{{ template "header.html" .}}
+
+<section >
+    <div class="container">
+        <div class="row" style="padding-left: 15px; padding-right: 15px;">
+
+            <div class="col-md-9"style="border-left: 1px solid #e2e2e2;">
+                <div class="row" style="background-color: #eeeeee;">
+                    <div class="col" style="">
+                        <nav aria-label="breadcrumb" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Профиль</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Барахолка</li>
+                                <li class="breadcrumb-item active" aria-current="page">Новый товар</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row" >
+                    <div class="col" style="">
+                        <br>
+                        <form action="./edit_advert" type="post">
+                            <div class="form-group p-3" style="background-color: #eeeeee;">
+                                <div class="" style="width: 150px; height:120px; background-color: #b4b4b4;">
+                                    <a class="d-flex align-items-center justify-content-center" href="#" style="width: 100%; height: 100%">
+                                        <span style="color:#7c7c7c;">Добавить фото</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_item_name">Название товара</label>
+                                <input required type="text" class="form-control" name="goods_item_name" id="goods_item_name" placeholder="Введите название товара">
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_item_desk">Описание товара</label>
+                                <textarea required class="form-control" name="goods_item_desk" id="goods_item_desk" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="goods_item_prise">Цена (грн.)</label>
+                                        <input required type="number" class="form-control" name="goods_item_prise" id="goods_item_prise" placeholder="Цена">
+                                    </div>
+                                    <div class="col">
+                                        <label for="goods_item_condition">Состояние товара</label>
+                                        <select id="goods_item_condition" name="goods_item_condition" class="form-control">
+                                            <option value="0">Новое</option>
+                                            <option  value="1" selected>Б.У.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_item_location">Где находится ( Населенный пункт )</label>
+                                <input required  class="form-control" name="goods_item_location" id="goods_item_location" value="г. Южный" >
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_item_keywords">Ключевые слова для поиска</label>
+                                <input required type="text" class="form-control" name="goods_item_keywords" id="goods_item_keywords" placeholder="20 слов через запатую. Коляска, Купить, Детская.">
+                            </div>
+
+                            <div style="float: right;">
+                                <button type="submit" name="close" class="btn btn-outline-secondary">Отмена</button>
+                                <button type="submit" name="submit" class="btn btn-success">Добавить</button>
+                            </div>
+                        </form>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="background-color: #e0e0e0;">
+                <div  style="width: 100%; height: 100%; margin-bottom: 30px;">
+                    <br>
+                    <br>
+                    <div class="d-flex justify-content-center" style="width: 100%;">
+                        <div style="width: 100px; height: 100px; border-radius: 50%; background-color: #919191;"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="h5" style="margin-top: 15px;"> Иванов Петр Сергеевич </div>
+                        <div>Телефон: (063) 815-84-81</div>
+                        <div>Почта: pbymsz@gmail.com</div>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Мой профиль</a>
+                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Объявления</a>
+                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Сообщения <b>+2</b></a>
+                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Настройки</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
+{{ template "footer.html" .}}

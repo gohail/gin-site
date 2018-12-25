@@ -11,6 +11,7 @@ func initializeRoutes() {
 	// Handle the GET requests at /
 	router.GET("/", controllers.GetHome)
 
+
 	userRoutes := router.Group("/u")
 	{
 		// Handle the GET requests at /u/login
@@ -35,6 +36,7 @@ func initializeRoutes() {
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
 	}
+<<<<<<< Updated upstream
 
 	advertRoutes := router.Group("/baraholka")
 	{
@@ -46,6 +48,22 @@ func initializeRoutes() {
 
 		// Handle GET requests /adverts/new_adv
 		//advertRoutes.GET("/new_adv")
+=======
+
+
+}
+
+func showIndexPage(context *gin.Context) {
+	context.HTML(
+		http.StatusOK,
+		"home.html",
+		gin.H{
+			"title":   "Home Page",
+			"payload": models.GetAllArticles(),
+		},
+	)
+}
+>>>>>>> Stashed changes
 
 		// Handle POST requests /adverts/new_adv
 		//advertRoutes.POST("/new_adv")

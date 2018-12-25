@@ -3,7 +3,7 @@
     <div class="container" role="main">
         <div id="main-column">
             <h2>{{.Advert.Title}}</h2>
-            {{ .Advert.Content}}</div>
+            <div class="content">{{noescape .Advert.Content}}</div>\
             <h1>Price: {{.Advert.Price}}</h1>
         </div>
     </div>

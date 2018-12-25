@@ -1,0 +1,149 @@
+{{ template "header.html" .}}
+<style type="text/css">
+    .registration-form  .nav-item{
+
+        font-size: 130%;
+        font-weight: 500;
+        background-color: #b6b6b6;
+        color: white ;
+    }
+    .registration-form  .active{
+        background-color: #007bff !important;
+        color: white !important;
+    }
+    .nav-tabs .nav-link {
+        border: 0px ;
+        margin-left: 2px;
+
+    }
+</style>
+<section>
+    <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="bd-example bd-example-tabs" role="tabpanel">
+                    <nav>
+                        <div class="registration-form nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Вход</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Регистрация</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <section class="login-block">
+                                <div class="container-login">
+                                    <div class="row">
+                                        <div class="col-md-4 login-sec">
+                                            <br>
+                                            <br>
+                                            <form class="login-form" action="/user_login" type="post">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1" class="text-uppercase">E-Mail Адрес</label>
+                                                    <input required autofocus type="text" class="form-control" placeholder="Ваша электронная почта">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1" class="text-uppercase">Пароль</label>
+                                                    <input required type="password" class="form-control" placeholder="Пароль">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-login ">Войти</button>
+                                                    <label class="form-check-label " style="margin-left: 40px;">
+                                                        <input type="checkbox" class="form-check-input">
+                                                        <small>Remember Me</small>
+                                                    </label>
+                                                </div>
+                                                <div style=" margin-top: 30px; border-top: 1px solid #d4d4d4;">
+                                                    <div class="form-group " style="margin-top: 20px;">
+                                                        <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Войти через Facebook</button>
+                                                        <button type="submit" class="btn btn-warning">Войти через Google</button>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8 ">
+                                            <div class="bg-centered  d-flex align-items-center" style="width: 100%; min-height: 400px; background-image: url(/public/img/photo_1.jpg);">
+                                                <div style="width: 100%;" class="text-center">
+                                                    <div style="color:white; font-size: 150%; ">
+                                                        Добро пожаловать
+                                                    </div>
+                                                    <div style="color:white; font-size: 90%; ">
+                                                        На сайт объявлений
+                                                    </div>
+                                                    <div style="color:white; font-size: 150%; ">
+                                                        г. Южный!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </section>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <section class="login-block">
+                                <div class="container-login">
+                                    <div class="row">
+                                        <div class="col-md-4 login-sec">
+                                            <br>
+                                            <br>
+                                            <form class="login-form" action="/user_registration" type="post">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1" class="">*Ваши ФИО</label>
+                                                    <input required autofocus type="text" class="form-control" placeholder="Как Вас зовут?">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1" class="text-uppercase">*E-Mail Адрес</label>
+                                                    <input required autofocus type="text" class="form-control" placeholder="Для подтверждения аккаунта">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="exampleInputPassword1" class="text-uppercase">*Пароль</label>
+                                                    <input required type="password" class="form-control" placeholder="Пароль">
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-login ">Регистрация</button>
+                                                </div>
+
+                                                <div style=" margin-top: 30px; border-top: 1px solid #d4d4d4;">
+                                                    <div class="form-group " style="margin-top: 20px;">
+                                                        <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Регистрация через Facebook</button>
+                                                        <button type="submit" class="btn btn-warning">Регистрация через Google</button>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-8 ">
+                                            <div class="bg-centered  d-flex align-items-center" style="width: 100%; min-height: 400px; background-image: url(/public/img/photo_3.jpg);">
+                                                <div style="width: 100%;" class="text-center">
+                                                    <div style="color:white; font-size: 150%; ">
+                                                        Добро пожаловать
+                                                    </div>
+                                                    <div style="color:white; font-size: 90%; ">
+                                                        На сайт объявлений
+                                                    </div>
+                                                    <div style="color:white; font-size: 150%; ">
+                                                        г. Южный!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </section>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{{ template "footer.html" .}}
