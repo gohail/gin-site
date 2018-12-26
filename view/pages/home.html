@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-{{ .Title }}
-=======
 {{ template "header.html" .}}
 
->>>>>>> Stashed changes
 <section>
     <div class="container">
         <div class="row" style="padding-left: 15px; padding-right: 15px;">
@@ -11,115 +7,19 @@
                 <div class="row" style="background-color: #e8e8e8;">
                     <div class="col">
                         <form action="/search" method="get">
-                            <div class="form-group input-group" style="margin-top: 23px; margin-bottom: 23px;">
+                            <div class="form-group input-group" style="margin-top: 33px; margin-bottom: 33px;">
                                 <label for="search_form"></label>
                                 <input required type="text" class="form-control" id="search_form" name="search_form" placeholder="Например: Старые носки">
                                 <button type="submit" class="btn btn-primary">ПОИСК</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
-                <div>
-                    <nav aria-label="breadcrumb" >
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                            <li class="breadcrumb-item"><a href="#">Барахолка</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Дырявые вонючие носки</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div id="content_wrapper" class="row" style=" padding-bottom: 20px; ">
+                <div id="content_wrapper" class="row">
                     <div class="col ">
-                        <p class="stuff_cart_header">Дырявые вонючие носки </p>
-                        <p>
-                            <span>г.Южный</span>
-                            /
-                            <span>Добавлено: в 10:58, 23 декабря 2018,</span>
-                            /
-                            <span> Состояние: Б.У.</span>
-                        </p>
-
-
-                        <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
-                            <div style="max-width: 550px;height: 350px; background-color: #999999; overflow: hidden;">
-                                <img  src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                            </div>
-                        </a>
-
-                        <br>
-                        <div class="stuff_cart_header_2" style="margin-bottom: 7px; ">
-                            <span>Цена: <span class="stuff_cart_prise">123 грн.</span></span>
+                        <div style="margin-bottom: -10px; margin-top: 5px;">
+                            <p style="font-size: 85%; color: #979797;">Результат поиска: 'Старые носки'. Найдено 5 объявлений</p>
                         </div>
-                        <div class="stuff_cart_header_2" style="padding-bottom: 15px;">
-                            <span>Контакты: (063) 815-84-81, </span>
-                            <span>(063) 815-84-81</span>
-                        </div>
-
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cum delectus eaque error fugit minima modi, mollitia temporibus veniam. Autem consectetur corporis eveniet excepturi harum laboriosam modi odio veritatis?
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cum delectus eaque error fugit minima modi, mollitia temporibus veniam. Autem consectetur corporis eveniet excepturi harum laboriosam modi odio veritatis?
-                        </div>
-                        <br>
-                        <div>
-                            <div class="owl-carousel owl-carousel-stuff-item owl-theme">
-                                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
-                                    <div style="max-width: 100%;height: 200px; background-color: #999999; overflow: hidden;">
-                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                                    </div>
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
-                                    <div style="max-width: 100%;height: 200px; background-color: #999999; overflow: hidden;">
-                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                                    </div>
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" data-type="image">
-                                    <div style="max-width: 100%;height: 200px; background-color: #999999; overflow: hidden;">
-                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                                    </div>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="background-color: #cbcbcb;">
-                    <div class="col">
-                        <p style="color:#6b6b6b; font-size: 90%; margin-bottom: 0px; padding: 5px;">Просмотров: 123</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div style="margin-top: 15px; margin-bottom: 15px;">
-                            <b>Написать автору объявления</b>
-                            <form action="/send_massage" method="post">
-                                <div class="form-group" style="margin-top: 10px;">
-                                    <input type="text" class="form-control" name="user_phone" id="user_phone" placeholder="Ваш Телефон">
-                                </div>
-                                <div class="form-group">
-
-                                    <textarea class="form-control" name="user_massage" placeholder="Ваше сообщение"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Отправить</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="background-color: #d3d3d3;">
-                    <div class="col">
-                        <br>
-                        <div>
-                            <div class="">
-                                Другие объявления пользователя <a href="user_desk/{{.user.user_id}}">Иванов Петр Сергеевич</a> : <span style="color: #7b7b7b;">(Показаны 2 из 5)</span>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                </div>
-
-                <div class="row" style="background-color: #e8e8e8;">
-                    <div class="col">
-
                     {{/*Пункт списка / */}}
                         <div class="row search_item_list">
                             <div class="col-md-3">
@@ -147,7 +47,6 @@
                         </div>
                     {{/* / Пункт списка */}}
                     {{/*Пункт списка / */}}
-
                         <div class="row search_item_list">
                             <div class="col-md-3">
                                 <a href="#">
@@ -173,16 +72,87 @@
                             </div>
                         </div>
                     {{/* / Пункт списка */}}
-                        <br>
-                        <a href="#">Смотреть все объявления автора ></a>
-                        <br>
-                        <br>
+                    {{/*Пункт списка / */}}
+                        <div class="row search_item_list">
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <div class="bg-centered search_item_list_img" style="width: 100%; min-height: 130px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <a href="/stuff/{{.search_list.id_list}}"><h2 class="search_item_list_header">Старые вонючие носки </h2></a>
+                                <div style="height: 5px;"></div>
+                                <p class="search_item_list_desk">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias amet asperiores, dicta doloribus ea earum est facere fugit harum itaque neque obcaecati quod similique ullam unde ut vitae voluptate!</p>
+                                <div class="row search_item_list_info">
+                                    <div class="col">
+                                        <span>г.Южный</span>
+                                        <span>/</span>
+                                        <span>20 Ноября 2018</span>
+                                        <span>/</span>
+                                        <span><a href="user_desk/{{.search_list.id_user}}">Иванов Петр Сергеевич</a></span>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md"> <div class="search_item_list_prise">123 грн.</div> </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/* / Пункт списка */}}
+                    {{/*Пункт списка / */}}
+                        <div class="row search_item_list">
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <div class="bg-centered search_item_list_img" style="width: 100%; min-height: 130px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <a href="/stuff/{{.search_list.id_list}}"><h2 class="search_item_list_header">Старые вонючие носки </h2></a>
+                                <div style="height: 5px;"></div>
+                                <p class="search_item_list_desk">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias amet asperiores, dicta doloribus ea earum est facere fugit harum itaque neque obcaecati quod similique ullam unde ut vitae voluptate!</p>
+                                <div class="row search_item_list_info">
+                                    <div class="col">
+                                        <span>г.Южный</span>
+                                        <span>/</span>
+                                        <span>20 Ноября 2018</span>
+                                        <span>/</span>
+                                        <span><a href="user_desk/{{.search_list.id_user}}">Иванов Петр Сергеевич</a></span>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md"> <div class="search_item_list_prise">123 грн.</div> </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/* / Пункт списка */}}
+
+
+
+
+
+
+                        <div>
+                            <br>
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Previous</span>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item active">
+                                        <span class="page-link"> 2 <span class="sr-only">(current)</span></span>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+
+
+
                     </div>
-
-
-
-
-
                 </div>
             </div>
             <div class="col-md-4" style="background-color: #cacaca;">

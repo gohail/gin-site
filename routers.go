@@ -11,8 +11,6 @@ func initializeRoutes() {
 	// Handle the GET requests at /
 	router.GET("/", controllers.GetHome)
 
-	// Handle the GET requests at /search
-	router.GET("/search", controllers.GetSearch)
 
 	userRoutes := router.Group("/u")
 	{
@@ -32,25 +30,31 @@ func initializeRoutes() {
 		// Handle the GET requests at /u/register
 		// Show the registration page
 		// Ensure that the user is not logged in by using the middleware
-		//userRoutes.GET("/register", middlewere.EnsureNotLoggedIn(), handlers.ShowRegistrationPage)
+		userRoutes.GET("/register", middlewere.EnsureNotLoggedIn(), handlers.ShowRegistrationPage)
 
 		// Handle POST requests at /u/register
 		// Ensure that the user is not logged in by using the middleware
 		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
 	}
 
+
 	advertRoutes := router.Group("/baraholka")
 	{
-		// Handle GET requests at /baraholka
-		advertRoutes.GET("/", controllers.BaraholkaMain)
-
-		// Handle GET requests at /baraholka/all
+		// Handle GET requests at /adverts/all
 		advertRoutes.GET("/all", controllers.GetAllAdverts)
 
-		// Handle GET requests at /baraholka/:id
+		// Handle GET requests at /adverts/:id
 		advertRoutes.GET("/show/:id", controllers.AdvertGet)
 
 		// Handle GET requests /adverts/new_adv
 		//advertRoutes.GET("/new_adv")
-	}
+
+
+
+}
+
+	// Handle POST requests /adverts/new_adv
+		//advertRoutes.POST("/new_adv")
+
+
 }

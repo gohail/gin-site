@@ -9,7 +9,7 @@ import (
 func GetHome(c *gin.Context) {
 	h := DefaultH(c)
 	h["Title"] = "Welcome to Desk service"
-	c.HTML(http.StatusOK, "home.html", h)
+	c.HTML(http.StatusOK, "index.html", h)
 }
 
 //GetSearch handles GET /search route
