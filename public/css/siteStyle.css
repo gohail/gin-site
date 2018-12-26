@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,600,600i,700&subset=cyrillic');
-
+:root {
+    --primary: #0f4fa8;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0f4fa8;
+    border-color: #0f4fa8;
+}
 body{
     font-family: 'Fira Sans', sans-serif;
     font-size: 14px;
@@ -21,6 +28,7 @@ h1, h2, h3, h4, h5, h6{
     font-size: 90%;
     max-height: 100px;
     overflow: hidden;
+    margin-top: -4px;
     margin-bottom: 7px;
 }
 .search_item_list_header{
@@ -47,7 +55,7 @@ a:hover > .search_item_list_header{
     margin-bottom: 7px;
 }
 .search_item_list_img{
-    border-radius:10px ;
+    border-radius:4px ;
 }
 
 .btn-my-cabinet:hover{background-color: #ea3400;}
