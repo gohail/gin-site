@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strings"
 )
 
 func ShowLoginPage(context *gin.Context) {
@@ -19,11 +20,12 @@ func ShowLoginPage(context *gin.Context) {
 
 func PerformLogin(context *gin.Context) {
 	session := sessions.Default(context)
-	username := context.PostForm("username")
 	password := context.PostForm("password")
+	email := context.PostForm("email")
+	email = strings.ToLower(email)
 
-	if models.IsUserValid(username, password) {
-		session.Set("user-id", username)
+	if models.IsUserValid(email, password) {
+		session.Set("user-id", email)
 		err := session.Save()
 		if err != nil {
 			context.HTML(http.StatusBadRequest, "login.html", gin.H{
@@ -56,27 +58,20 @@ func Logout(context *gin.Context) {
 	context.Redirect(http.StatusTemporaryRedirect, "/")
 }
 
-func ShowRegistrationPage(context *gin.Context) {
-	// Call the render function with the name of the template to render
-	context.HTML(http.StatusOK, "register.html",
-		gin.H{
-			"title": "Register",
-		},
-	)
-}
-
 func Register(context *gin.Context) {
 	// Obtain the POSTed username and password values
 	username := context.PostForm("username")
 	password := context.PostForm("password")
+	email := context.PostForm("email")
+	email = strings.ToLower(email)
 
-	if _, err := models.RegisterNewUser(username, password); err == nil {
+	if _, err := models.RegisterNewUser(email, username, password); err == nil {
 		// If the user is created, set the token in a cookie and log the user in
 		session := sessions.Default(context)
-		session.Set("user-id", username)
+		session.Set("user-id", email)
 		err := session.Save()
 		if err != nil {
-			context.HTML(http.StatusBadRequest, "register.html",
+			context.HTML(http.StatusBadRequest, "login.html",
 				gin.H{
 					"ErrorTitle":   "Login Failed",
 					"ErrorMessage": "Failed to generate session token"})
@@ -90,7 +85,7 @@ func Register(context *gin.Context) {
 	} else {
 		// If the username/password combination is invalid,
 		// show the error message on the login page
-		context.HTML(http.StatusBadRequest, "register.html",
+		context.HTML(http.StatusBadRequest, "login.html",
 			gin.H{
 				"ErrorTitle":   "Registration Failed",
 				"ErrorMessage": err.Error()})

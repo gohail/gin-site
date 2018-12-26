@@ -11,3 +11,9 @@ func GetHome(c *gin.Context) {
 	h["Title"] = "Welcome to Desk service"
 	c.HTML(http.StatusOK, "home.html", h)
 }
+
+//GetSearch handles GET /search route
+func GetSearch(c *gin.Context) {
+	h := DefaultH(c)
+	c.HTML(http.StatusOK, "search.html", h)
+}

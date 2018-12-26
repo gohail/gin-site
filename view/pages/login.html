@@ -24,6 +24,12 @@
         <div class="row">
             <div class="col">
                 <div class="bd-example bd-example-tabs" role="tabpanel">
+                    <!--If there's an error, display the error-->
+                    {{ if .ErrorTitle}}
+                        <p class="bg-danger">
+                            {{.ErrorTitle}}: {{.ErrorMessage}}
+                        </p>
+                    {{end}}
                     <nav>
                         <div class="registration-form nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Вход</a>
@@ -38,14 +44,14 @@
                                         <div class="col-md-4 login-sec">
                                             <br>
                                             <br>
-                                            <form class="login-form" action="/user_login" type="post">
+                                            <form class="form" action="/u/login" method="POST">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="text-uppercase">E-Mail Адрес</label>
-                                                    <input required autofocus type="text" class="form-control" placeholder="Ваша электронная почта">
+                                                    <input required autofocus type="text" class="form-control" id="email" name="email" placeholder="Ваша электронная почта">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1" class="text-uppercase">Пароль</label>
-                                                    <input required type="password" class="form-control" placeholder="Пароль">
+                                                    <input required type="password" class="form-control" id="password" name="password" placeholder="Пароль">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-login ">Войти</button>
@@ -88,19 +94,19 @@
                                         <div class="col-md-4 login-sec">
                                             <br>
                                             <br>
-                                            <form class="login-form" action="/user_registration" type="post">
+                                            <form class="login-form" action="/u/register" method="POST">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="">*Ваши ФИО</label>
-                                                    <input required autofocus type="text" class="form-control" placeholder="Как Вас зовут?">
+                                                    <input required autofocus type="text" class="form-control" id="username" name="username" placeholder="Как Вас зовут?">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1" class="text-uppercase">*E-Mail Адрес</label>
-                                                    <input required autofocus type="text" class="form-control" placeholder="Для подтверждения аккаунта">
+                                                    <input required autofocus type="text" class="form-control" id="email" name="email" placeholder="Для подтверждения аккаунта">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1" class="text-uppercase">*Пароль</label>
-                                                    <input required type="password" class="form-control" placeholder="Пароль">
+                                                    <input required type="password" class="form-control" id="password" name="password" placeholder="Пароль">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-login ">Регистрация</button>
