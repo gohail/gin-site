@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+//User type contains user info
 type User struct {
 	Model
 	UserName  string `form:"name"`
@@ -15,14 +16,27 @@ type User struct {
 	Adverts []Advert `gorm:"ForeignKey:UserID"` // One-To-Many relationship
 }
 
-func IsUserValid(email, password string) bool {
+//Login view model
+type Login struct {
+	Email    string `form:"email" binding:"required" validate:"required,email"`
+	Password string `form:"password" binding:"required" validate:"required,max=8,min=4"`
+}
+
+//Register view model
+type Register struct {
+	Name     string `form:"name" binding:"required" validate:"required,max=20,min=4"`
+	Email    string `form:"email" binding:"required" validate:"required,email"`
+	Password string `form:"password" binding:"required" validate:"required,max=10,min=4"`
+}
+
+func IsUserValid(email, password string) (uint64, bool) {
 	db := GetBD()
 	u := User{}
 	db.Where("user_email = lower(?)", email).First(&u)
 	if u.ID == 0 || bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(password)) != nil {
-		return false
+		return 0, false
 	}
-	return true
+	return u.ID, true
 }
 
 func RegisterNewUser(email, username, password string) (*User, error) {

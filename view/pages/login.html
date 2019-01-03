@@ -25,11 +25,13 @@
             <div class="col">
                 <div class="bd-example bd-example-tabs" role="tabpanel">
                     <!--If there's an error, display the error-->
-                    {{ if .ErrorTitle}}
-                        <p class="bg-danger">
-                            {{.ErrorTitle}}: {{.ErrorMessage}}
-                        </p>
-                    {{end}}
+                    {{range .Flash}}
+                    <div class="alert alert-danger">{{.}}</div><p>
+                        {{end}}
+
+                        {{.Login}}
+                        <h1>{{.Email}}</h1>
+                        <h1>{{.Passvord}}</h1>
                     <nav>
                         <div class="registration-form nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Вход</a>

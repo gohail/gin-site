@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/andreyberezin/gin-site/system"
+	"github.com/andreyberezin/gin-site/validator"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
@@ -14,6 +15,8 @@ func main() {
 	system.LoadDbConfig()
 	models.SetDB(system.GetConnectionString())
 	models.AutoMigrate()
+	validator.SetValidator("validate")
+	system.InitModelsForSession()
 
 	router = gin.Default()
 	router.Use(static.Serve("/public", static.LocalFile("./public", true)))

@@ -19,15 +19,15 @@ func initializeRoutes() {
 		// Handle the GET requests at /u/login
 		// Show the login page
 		// Ensure that the user is not logged in by using the middleware
-		userRoutes.GET("/login", middlewere.EnsureNotLoggedIn(), handlers.ShowLoginPage)
+		userRoutes.GET("/login", handlers.ShowLoginPage)
 
 		// Handle POST requests at /u/login
 		// Ensure that the user is not logged in by using the middleware
-		userRoutes.POST("/login", middlewere.EnsureNotLoggedIn(), handlers.PerformLogin)
+		userRoutes.POST("/login", handlers.PostLogin)
 
 		// Handle GET requests at /u/logout
 		// Ensure that the user is logged in by using the middleware
-		userRoutes.GET("/logout", middlewere.EnsureLoggedIn(), handlers.Logout)
+		userRoutes.GET("/logout", handlers.Logout)
 
 		// Handle the GET requests at /u/register
 		// Show the registration page
