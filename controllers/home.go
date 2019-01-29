@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-//GetHome handles GET / route
+// GetHome handles GET / route
 func GetHome(c *gin.Context) {
 	h := DefaultH(c)
 	h["Title"] = "Welcome to Desk service"

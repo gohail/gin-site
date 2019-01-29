@@ -1,0 +1,16 @@
+<!--myinfo.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<!--Display the title of the article-->
+<h1>{{.name}}</h1>
+
+<!--Display the content of the article-->
+<p>ContactEmail: {{.info.ContactEmail}}</p>
+<p>PhoneNumber: {{.info.PhoneNumber}}</p>
+<p>AboutMe: {{.info.AboutMe}}</p>
+<p>Photo: {{.info.Photo}}</p>
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

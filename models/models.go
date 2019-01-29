@@ -34,5 +34,5 @@ func GetBD() *gorm.DB {
 
 //AutoMigrate runs gorm auto migration
 func AutoMigrate() {
-	db.AutoMigrate(&User{}, &Advert{})
+	db.AutoMigrate(&User{}, &Advert{}, &ExtraUserInfo{})
 }

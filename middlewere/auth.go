@@ -1,38 +1,37 @@
 package middlewere
 
 import (
+	"github.com/andreyberezin/gin-site/controllers"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-// This middleware ensures that a request will be aborted with an error
-// if the user is not logged in
+// This middleware ensures that a request will be aborted with an error if the user is not logged in
 func EnsureLoggedIn() gin.HandlerFunc {
-	return func(context *gin.Context) {
-		// If there's an error or if the token is empty
-		// the user is not logged in
-		session := sessions.Default(context)
-		user := session.Get("user-id")
-		if user == nil {
-			//context.JSON(http.StatusBadRequest, gin.H{"error": "Already logged"})
-			context.HTML(http.StatusBadRequest, "login.html", gin.H{
-				"ErrorTitle":   "Login Failed",
-				"ErrorMessage": "please login"})
+	return func(c *gin.Context) {
+		s := sessions.Default(c)
+		user := s.Get(controllers.USER_ID)
+		if user != nil {
+			c.Next()
+		} else {
+			s.AddFlash("Пожалуйста авторизируйтесь.")
+			s.Save()
+			c.Redirect(http.StatusFound, "/auth/login")
+			c.Abort()
 		}
-		//c.AbortWithStatus(http.StatusUnauthorized)
 	}
 }
 
-// This middleware ensures that a request will be aborted with an error
-// if the user is already logged in
+// This middleware ensures that a request will be aborted with an error if the user is already logged in
 func EnsureNotLoggedIn() gin.HandlerFunc {
-	return func(context *gin.Context) {
-		session := sessions.Default(context)
-		user := session.Get("user-id")
-		if user != nil {
-			//context.JSON(http.StatusBadRequest, gin.H{"error": "Already logged"})
-			context.AbortWithStatus(http.StatusUnauthorized)
+	return func(c *gin.Context) {
+		s := sessions.Default(c)
+		user := s.Get(controllers.USER_ID)
+		if user == nil {
+			c.Next()
+		} else {
+			c.AbortWithStatus(http.StatusUnauthorized)
 		}
 	}
 }

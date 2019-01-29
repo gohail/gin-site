@@ -6,14 +6,25 @@ import (
 	"strings"
 )
 
-//User type contains user info
+//User type contains user basic info
 type User struct {
 	Model
-	UserName  string `form:"name"`
-	Password  string `form:"password" binding:"required"`
-	UserEmail string `form:"email" binding:"required" gorm:"unique_index"`
+	UserName  string
+	Password  string
+	UserEmail string `gorm:"unique_index"`
+
+	ExtraUserInfo ExtraUserInfo `gorm:"ForeignKey:InfoRefer"` // Has-One relationship
+	InfoRefer     uint
 
 	Adverts []Advert `gorm:"ForeignKey:UserID"` // One-To-Many relationship
+}
+
+type ExtraUserInfo struct {
+	Model
+	ContactEmail string `form:"email"`
+	PhoneNumber  string `form:"phone"`
+	AboutMe      string `form:"about"`
+	Photo        string `form:"photo"`
 }
 
 //Login view model
@@ -29,6 +40,14 @@ type Register struct {
 	Password string `form:"password" binding:"required" validate:"required,max=10,min=4"`
 }
 
+func (r *Register) RemovePass() {
+	r.Password = ""
+}
+
+func (l *Login) RemovePass() {
+	l.Password = ""
+}
+
 func IsUserValid(email, password string) (uint64, bool) {
 	db := GetBD()
 	u := User{}
@@ -39,20 +58,20 @@ func IsUserValid(email, password string) (uint64, bool) {
 	return u.ID, true
 }
 
-func RegisterNewUser(email, username, password string) (*User, error) {
-	if strings.TrimSpace(password) == "" {
-		return nil, errors.New("The password can't be empty")
+func RegisterNewUser(r *Register) (*User, error) {
+	if strings.TrimSpace(r.Password) == "" {
+		return nil, errors.New("пароль не может быть пустым")
 	}
-	if !isUserEmailAvailable(email) {
-		return nil, errors.New("The username isn't available")
+	if !isUserEmailAvailable(r.Email) {
+		return nil, errors.New("этот email уже занят")
 	}
 	db := GetBD()
 	u := User{}
-	u.UserName = username
-	u.Password = password
-	u.UserEmail = email
+	u.UserName = r.Name
+	u.Password = r.Password
+	u.UserEmail = r.Email
 	if err := db.Create(&u).Error; err != nil {
-		return nil, errors.New("Error whilst registering user")
+		return nil, errors.New("ошибка регистрации пользователя")
 	}
 	return &u, nil
 }

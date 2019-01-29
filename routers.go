@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/andreyberezin/gin-site/controllers"
-	"github.com/andreyberezin/gin-site/handlers"
 	"github.com/andreyberezin/gin-site/middlewere"
 )
 
@@ -14,29 +13,24 @@ func initializeRoutes() {
 	// Handle the GET requests at /search
 	router.GET("/search", controllers.GetSearch)
 
-	userRoutes := router.Group("/u")
+	authRoutes := router.Group("/auth")
 	{
 		// Handle the GET requests at /u/login
 		// Show the login page
 		// Ensure that the user is not logged in by using the middleware
-		userRoutes.GET("/login", handlers.ShowLoginPage)
+		authRoutes.GET("/login", controllers.ShowLoginPage)
 
 		// Handle POST requests at /u/login
 		// Ensure that the user is not logged in by using the middleware
-		userRoutes.POST("/login", handlers.PostLogin)
+		authRoutes.POST("/login", controllers.PostLogin)
 
 		// Handle GET requests at /u/logout
 		// Ensure that the user is logged in by using the middleware
-		userRoutes.GET("/logout", handlers.Logout)
-
-		// Handle the GET requests at /u/register
-		// Show the registration page
-		// Ensure that the user is not logged in by using the middleware
-		//userRoutes.GET("/register", middlewere.EnsureNotLoggedIn(), handlers.ShowRegistrationPage)
+		authRoutes.GET("/logout", controllers.Logout)
 
 		// Handle POST requests at /u/register
 		// Ensure that the user is not logged in by using the middleware
-		userRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), handlers.Register)
+		authRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), controllers.PostRegister)
 	}
 
 	advertRoutes := router.Group("/baraholka")
@@ -52,5 +46,20 @@ func initializeRoutes() {
 
 		// Handle GET requests /adverts/new_adv
 		//advertRoutes.GET("/new_adv")
+	}
+
+	userRouters := router.Group("/user")
+	userRouters.Use(middlewere.EnsureLoggedIn())
+	{
+		// Handle GET request /users/myinfo
+		userRouters.GET("/myinfo", controllers.GetSelfInfo)
+
+		// Handle POST request /users/myinfo receive ExtraUserInfo{}
+		userRouters.POST("/myinfo", controllers.GetSelfInfo)
+	}
+
+	adminRouters := router.Group("/admin")
+	{
+		adminRouters.GET("/", middlewere.EnsureLoggedIn(), controllers.AdminTestGet)
 	}
 }

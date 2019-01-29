@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-//AdvertGet handles GET /adverts/:id
+// AdvertGet handles GET /adverts/:id
 func AdvertGet(c *gin.Context) {
 	db := models.GetBD()
 	advert := models.Advert{}
@@ -22,7 +22,7 @@ func AdvertGet(c *gin.Context) {
 	c.HTML(http.StatusOK, "advert/show", h)
 }
 
-//AdvertGet handles GET /adverts/all
+// AdvertGet handles GET /adverts/all
 func GetAllAdverts(c *gin.Context) {
 	db := models.GetBD()
 	var adverts []models.Advert
