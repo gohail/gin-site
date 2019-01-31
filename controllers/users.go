@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"github.com/Sirupsen/logrus"
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -18,8 +19,12 @@ func GetSelfInfo(c *gin.Context) {
 	info := models.ExtraUserInfo{}
 	db.First(&u, id).Related(&info, "InfoRefer")
 	if info.ID == 0 {
-		db.Save(&info)
-		db.Model(&u).Update("InfoRefer", uint(info.ID))
+		if err := db.Save(&info).Error; err != nil {
+			logrus.Error(err)
+		}
+		if err := db.Model(&u).Update("InfoRefer", uint(info.ID)).Error; err != nil {
+			logrus.Error(err)
+		}
 	}
 	h["name"] = u.UserName
 	h["info"] = info

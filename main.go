@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Sirupsen/logrus"
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/andreyberezin/gin-site/system"
 	"github.com/andreyberezin/gin-site/validator"
@@ -12,6 +13,7 @@ import (
 var router *gin.Engine
 
 func main() {
+	initLogger()
 	system.LoadDbConfig()
 	models.SetDB(system.GetConnectionString())
 	models.AutoMigrate()
@@ -27,4 +29,12 @@ func main() {
 	initializeRoutes()
 
 	router.Run()
+}
+
+func initLogger() {
+	logrus.SetFormatter(&logrus.TextFormatter{})
+	//logrus.SetOutput(os.Stderr)
+	if gin.Mode() == gin.DebugMode {
+		logrus.SetLevel(logrus.DebugLevel)
+	}
 }

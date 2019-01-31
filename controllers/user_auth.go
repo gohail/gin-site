@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/andreyberezin/gin-site/validator"
 	"github.com/gin-gonic/contrib/sessions"
@@ -66,7 +65,6 @@ func PostRegister(c *gin.Context) {
 	session := sessions.Default(c)
 	register := models.Register{}
 	if err := c.ShouldBind(&register); err != nil {
-		fmt.Println("WOW ERROR")
 		session.AddFlash("Пожалуйста, заполните пустые поля!")
 		register.RemovePass()
 		session.Set("register", register)

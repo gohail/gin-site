@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"github.com/Sirupsen/logrus"
 	"golang.org/x/crypto/bcrypt"
 	"strings"
 )
@@ -71,6 +72,7 @@ func RegisterNewUser(r *Register) (*User, error) {
 	u.Password = r.Password
 	u.UserEmail = r.Email
 	if err := db.Create(&u).Error; err != nil {
+		logrus.Error(err)
 		return nil, errors.New("ошибка регистрации пользователя")
 	}
 	return &u, nil
