@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	"github.com/Sirupsen/logrus"
 	"github.com/andreyberezin/gin-site/models"
+	"github.com/andreyberezin/gin-site/system"
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -19,12 +19,8 @@ func GetSelfInfo(c *gin.Context) {
 	info := models.ExtraUserInfo{}
 	db.First(&u, id).Related(&info, "InfoRefer")
 	if info.ID == 0 {
-		if err := db.Save(&info).Error; err != nil {
-			logrus.Error(err)
-		}
-		if err := db.Model(&u).Update("InfoRefer", uint(info.ID)).Error; err != nil {
-			logrus.Error(err)
-		}
+		system.LogErr(db.Save(&info).Error)
+		system.LogErr(db.Model(&u).Update("InfoRefer", uint(info.ID)).Error)
 	}
 	h["name"] = u.UserName
 	h["info"] = info
