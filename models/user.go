@@ -7,12 +7,15 @@ import (
 	"strings"
 )
 
+const defaultRole string = "user"
+
 //User type contains user basic info
 type User struct {
 	Model
 	UserName  string
 	Password  string
 	UserEmail string `gorm:"unique_index"`
+	Role      string
 
 	ExtraUserInfo ExtraUserInfo `gorm:"ForeignKey:InfoRefer"` // Has-One relationship
 	InfoRefer     uint
@@ -71,6 +74,7 @@ func RegisterNewUser(r *Register) (*User, error) {
 	u.UserName = r.Name
 	u.Password = r.Password
 	u.UserEmail = r.Email
+	u.Role = defaultRole
 	if err := db.Create(&u).Error; err != nil {
 		logrus.Error(err)
 		return nil, errors.New("ошибка регистрации пользователя")

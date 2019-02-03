@@ -17,6 +17,7 @@ func main() {
 	system.LoadDbConfig()
 	models.SetDB(system.GetConnectionString())
 	models.AutoMigrate()
+	system.InitAdminByConfig()
 	validator.SetValidator("validate")
 	system.InitModelsForSession()
 
