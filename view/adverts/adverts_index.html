@@ -1,0 +1,18 @@
+{{define "advert/index"}}
+<!--Loop over the `advertsList` variable, which is the list of adverts-->
+{{range .advertsList }}
+    <div class="media" style="margin-top: 10px; margin-bottom: 30px; ">
+        <div class="bg-centered search_item_list_img mr-3" style="width: 100px; min-height: 100px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+        <div class="media-body mr-3">
+            <a href="/advert/show/{{.ID}}"><h2 class="search_item_list_header">{{.Title}}</h2></a>
+
+            <p class="search_item_list_desk">{{.Content}}</p>
+            <div class="search_item_list_prise">{{.Price}}</div>
+            <span class="post-info-item">
+            <i class="fa fa-calendar-alt mr-1"></i>опубликовано: {{printf "%04d-%02d-%02d" .CreatedAt.Year .CreatedAt.Month .CreatedAt.Day}}
+            </span>
+            <p>IMG: {{.Img}}</p>
+        </div>
+    </div>
+{{end}}
+{{end}}

@@ -13,22 +13,39 @@ func initializeRoutes() {
 	// Handle the GET requests at /search
 	router.GET("/search", controllers.GetSearch)
 
+	boardRoutes := router.Group("/board")
+	{
+		// Handle the Get requests at /board shows all published indexed adverts
+		boardRoutes.GET("/", controllers.MainBoard)
+	}
+
+	advertsRoutes := router.Group("/advert")
+	{
+		advertsRoutes.GET("/add_new", middlewere.EnsureLoggedIn(), controllers.GetNewAdvertTemplate)
+
+		advertsRoutes.POST("/add_new", middlewere.EnsureLoggedIn(), controllers.PostAddNewAdvert)
+
+		advertsRoutes.GET("/prove/:id", middlewere.EnsureLoggedIn(), controllers.GetAdvertProve)
+
+		advertsRoutes.GET("/show/:id", controllers.AdvertGet)
+	}
+
 	authRoutes := router.Group("/auth")
 	{
-		// Handle the GET requests at /u/login
+		// Handle the GET requests at /auth/login
 		// Show the login page
 		// Ensure that the user is not logged in by using the middleware
 		authRoutes.GET("/login", controllers.ShowLoginPage)
 
-		// Handle POST requests at /u/login
+		// Handle POST requests at /auth/login
 		// Ensure that the user is not logged in by using the middleware
 		authRoutes.POST("/login", controllers.PostLogin)
 
-		// Handle GET requests at /u/logout
+		// Handle GET requests at /auth/logout
 		// Ensure that the user is logged in by using the middleware
 		authRoutes.GET("/logout", controllers.Logout)
 
-		// Handle POST requests at /u/register
+		// Handle POST requests at /auth/register
 		// Ensure that the user is not logged in by using the middleware
 		authRoutes.POST("/register", middlewere.EnsureNotLoggedIn(), controllers.PostRegister)
 	}

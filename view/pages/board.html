@@ -1,0 +1,11 @@
+<!--adverts_index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<p>{{.count}}</p>
+<!--Display all adverts-->
+{{ template "advert/index" .}}
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

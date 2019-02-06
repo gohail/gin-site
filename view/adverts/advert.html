@@ -1,5 +1,5 @@
-{{define "advert/show"}}
-    {{template "header" .}}
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
     <div class="container" role="main">
         <div id="main-column">
             <h2>{{.Advert.Title}}</h2>
@@ -7,5 +7,5 @@
             <h1>Price: {{.Advert.Price}}</h1>
         </div>
     </div>
-    {{template "footer" .}}
-{{end}}
+    <!--Embed the footer.html template at this location-->
+    {{ template "footer.html" .}}

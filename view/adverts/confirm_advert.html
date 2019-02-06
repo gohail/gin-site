@@ -1,0 +1,24 @@
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+    {{range .Flash}}
+        <div class="alert alert-danger">{{.}}</div><p>
+    {{end}}
+    <div class="media" style="margin-top: 10px; margin-bottom: 30px; ">
+        <div class="bg-centered search_item_list_img mr-3" style="width: 100px; min-height: 100px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+  <h2 class="search_item_list_header">{{.Advert.Title}}</h2></a>
+    </div>
+
+<p class="search_item_list_desk">{{.Advert.Content}}</p>
+<div class="search_item_list_prise">{{.Advert.Price}}</div>
+<span class="post-info-item">
+            <i class="fa fa-calendar-alt mr-1"></i>дата: {{printf "%04d-%02d-%02d" .Advert.CreatedAt.Year .Advert.CreatedAt.Month .Advert.CreatedAt.Day}}
+            </span>
+<p>IMG: {{.Advert.Img}}</p>
+
+
+<a href="/advert/prove/{{.Advert.ID}}"><h2 class="search_item_list_header">ОПУБЛИКОВАТЬ</h2></a>
+
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

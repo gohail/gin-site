@@ -19,6 +19,12 @@ func LogErr(e error) {
 
 func LogInfo(e error) {
 	if e != nil {
-		logrus.Error(e)
+		logrus.Info(e)
+	}
+}
+
+func LogWarn(e error) {
+	if e != nil {
+		logrus.Warn(e)
 	}
 }

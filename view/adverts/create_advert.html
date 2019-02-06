@@ -1,0 +1,29 @@
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+    {{range .Flash}}
+        <div class="alert alert-danger">{{.}}</div><p>
+    {{end}}
+<form class="login-form" action="/advert/add_new" method="POST">
+    <div class="form-group">
+        <label for="exampleInputTitle" class="">Заголовок</label>
+        <input required autofocus type="text" class="form-control" id="title" name="title" placeholder="заголовок">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputContent" class="text-uppercase">Описание</label>
+        <input required autofocus type="text" class="form-control" id="content" name="content" placeholder="описание">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPrice" class="text-uppercase">Цена</label>
+        <input required type="text" class="form-control" id="price" name="price" placeholder="Цена">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-login ">Добавить Объяву</button>
+    </div>
+
+    <br>
+</form>
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

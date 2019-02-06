@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/andreyberezin/gin-site/models"
 	"github.com/andreyberezin/gin-site/system"
 	"github.com/gin-gonic/contrib/sessions"
@@ -24,7 +23,7 @@ func GetSelfInfo(c *gin.Context) {
 	}
 	h["name"] = u.UserName
 	h["info"] = info
-	fmt.Println(info)
+	//fmt.Println(info)
 	c.HTML(http.StatusOK, "myinfo.html", h)
 }
 
