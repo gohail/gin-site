@@ -1,16 +1,97 @@
-<!--myinfo.html-->
-
-<!--Embed the header.html template at this location-->
 {{ template "header.html" .}}
 
-<!--Display the title of the article-->
-<h1>{{.name}}</h1>
+<section >
+    <div class="container">
+        <div class="row" style="padding-left: 15px; padding-right: 15px;">
 
-<!--Display the content of the article-->
-<p>ContactEmail: {{.info.ContactEmail}}</p>
-<p>PhoneNumber: {{.info.PhoneNumber}}</p>
-<p>AboutMe: {{.info.AboutMe}}</p>
-<p>Photo: {{.info.Photo}}</p>
+            <div class="col-md-9"style="border-left: 1px solid #e2e2e2;">
+                <div class="row" style="background-color: #eeeeee;">
+                    <div class="col" style="">
+                        <nav aria-label="breadcrumb" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Профиль</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Моя ниформация</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
 
-<!--Embed the footer.html template at this location-->
+                <div class="row" >
+                    <div class="col">
+                        <br>
+                        <p class="h5">Моя информация</p>
+                        <hr>
+                        <form class="form" action="/u/login" method="POST">
+                            <div class="d-flex ">
+                                <div style="width: 100px; height: 100px; border-radius: 5%; background-color: #919191;"></div>
+                                <div class="form-group" style="padding-left: 20px;">
+                                    <label for="userPhotoFile">Загурзите фото для профиля</label>
+                                    <input type="file" class="form-control-file" id="userPhotoFile">
+                                    <small id="userPhotoFile" class="form-text ">Тут будет ошибка</small>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row" style="max-width: 400px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userName">ФИО</label>
+                                        <input required type="text" class="form-control" id="userName" name="userName" placeholder="Как вас звать?">
+                                        <small id="userName" class="form-text ">Тут будет ошибка</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="max-width: 400px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userPhoneMain">Телефон 1</label>
+                                        <input required type="text" class="form-control" id="userPhoneMain" name="userPhoneMain" placeholder="Ваш основной телефон">
+                                        <small id="userPhoneMain" class="form-text "></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="max-width: 400px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userPhoneSecond">Телефон 2</label>
+                                        <input type="text" class="form-control" id="userPhoneSecond" name="userPhoneSecond" placeholder="Второй телефон, если есть">
+                                        <small id="userPhoneSecond" class="form-text "></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="max-width: 400px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userEmail">Ваша электронаня почта</label>
+                                        <input required type="text" class="form-control" id="userEmail" name="userEmail" placeholder="email@mail.com">
+                                        <small id="userEmail" class="form-text "></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row" style="max-width: 400px;">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="userAboutMe">Коротко о себе</label>
+                                        <textarea class="form-control" id="userAboutMe" name="userAboutMe" rows="3" placeholder="Если есть что сказать"></textarea>
+                                        <small id="userEmail" class="form-text "></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <br>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3" style="background-color: #e0e0e0;">
+                {{ template "userSideBar.html" .}}
+            </div>
+        </div>
+    </div>
+</section>
+
 {{ template "footer.html" .}}

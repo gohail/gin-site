@@ -87,3 +87,10 @@ a:hover > .search_item_list_header{
     padding: 5px 9px;
     background-color: #ffceac;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+
+    border-radius: 0;
+    background-color: #0f4fa8;;
+
+}

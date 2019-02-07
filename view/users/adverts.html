@@ -1,0 +1,111 @@
+{{ template "header.html" .}}
+
+<section >
+    <div class="container">
+        <div class="row" style="padding-left: 15px; padding-right: 15px;">
+
+            <div class="col-md-9"style="border-left: 1px solid #e2e2e2;">
+                <div class="row" style="background-color: #eeeeee;">
+                    <div class="col" style="">
+                        <nav aria-label="breadcrumb" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Профиль</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Объявления</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row" >
+                    <div class="col" style="background-color: #0f4fa8;" >
+
+                        <br>
+                        <div >
+                            <form action="./edit_advert" type="post">
+                                <div class="input-group">
+                                    <select required  name="type_advert" class="custom-select" id="">
+                                        <option value="" selected>Выберите категорию...</option>
+                                        <option value="baragolka">Барахолка ( куплю / продам )</option>
+                                        <option value="rent">Аренда / Продажа ( Недвижимость )</option>
+                                        <option value="uslugi">Событие ( Концерт, встреча и т.п. )</option>
+                                        <option value="uslugi">Услуги ( СТО, Ателье и т.п. )</option>
+                                        <option value="uslugi">Бизнес ( Магазин, Производство т.п. )</option>
+                                        <option value="uslugi">Заведения ( Кафе, Ресторан и т.п. )</option>
+                                        <option value="uslugi">Личная анкета ( Мастер, Водитель и т.п. )</option>
+                                        <option value="uslugi">Благотворительность</option>
+                                        <option value="uslugi">Бюро находок</option>
+                                        <option value="uslugi">Вакансия ( Требуется электрик и т.п. )</option>
+                                        <option value="uslugi">Другое</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button href="#" class="btn btn-success " type="submit">+ Добавить объявление</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <br>
+                        <br>
+                        <p class="h5">Барахолка ( Куплю / Продам )</p>
+                        <hr>
+                        <!--Пункт списка / -->
+                        <div class="media" style="margin-top: 15px; margin-bottom: 15px; ">
+                            <div class="bg-centered search_item_list_img mr-3" style="width: 80px; min-height: 80px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+                            <div class="media-body mr-3">
+                                <a href="/stuff/{{.search_list.id_list}}"><h2 class="search_item_list_header">Старые вонючие носки </h2></a>
+                                <p class="search_item_list_desk">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias amet asperiores, dicta doloribus ea earum est facere fugit harum itaque neque obcaecati voluptate!</p>
+                                <div>
+                                    <a href="#" class=" btn  btn-sm btn-outline-success" style="padding: 0px 4px;" >Редактировать</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger" style="padding: 0px 4px;">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Пункт списка -->
+                        <!--Пункт списка / -->
+                        <div class="media" style="margin-top: 15px; margin-bottom: 15px; ">
+                            <div class="bg-centered search_item_list_img mr-3" style="width: 80px; min-height: 80px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+                            <div class="media-body mr-3">
+                                <a href="/stuff/{{.search_list.id_list}}"><h2 class="search_item_list_header">Старые вонючие носки </h2></a>
+                                <p class="search_item_list_desk">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias amet asperiores, dicta doloribus ea earum est facere fugit harum itaque neque obcaecati voluptate!</p>
+                                <div>
+                                    <a href="#" class=" btn  btn-sm btn-outline-success" style="padding: 0px 4px;" >Редактировать</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger" style="padding: 0px 4px;">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Пункт списка -->
+                        <br>
+                        <p class="h5">Аренда ( Недвижимость )</p>
+                        <hr>
+                        <!--Пункт списка / -->
+                        <div class="media" style="margin-top: 15px; margin-bottom: 15px; ">
+                            <div class="bg-centered search_item_list_img mr-3" style="width: 80px; min-height: 80px; background-color: #b9b9b9; background-image: url(/public/img/);"></div>
+                            <div class="media-body mr-3">
+                                <a href="/stuff/{{.search_list.id_list}}"><h2 class="search_item_list_header">Старые вонючие носки </h2></a>
+                                <p class="search_item_list_desk">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias amet asperiores, dicta doloribus ea earum est facere fugit harum itaque neque obcaecati voluptate!</p>
+                                <div>
+                                    <a href="#" class=" btn  btn-sm btn-outline-success" style="padding: 0px 4px;" >Редактировать</a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger" style="padding: 0px 4px;">Удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Пункт списка -->
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+            <div class="col-md-3" style="background-color: #e0e0e0;">
+                {{ template "userSideBar.html" .}}
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ template "footer.html" .}}
