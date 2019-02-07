@@ -19,8 +19,9 @@ h1, h2, h3, h4, h5, h6{
 .navbar {padding: 0;}
 .btn{border-radius: 0;}
 .btn-my-cabinet{
-    background-color: #ff3d00;
+    background-color: #0ca800;
     color: #ffffff;
+    //border: 1px solid #ffffff;
     font-weight:500;
     font-size: 100%;
 }
@@ -58,8 +59,8 @@ a:hover > .search_item_list_header{
     border-radius:4px ;
 }
 
-.btn-my-cabinet:hover{background-color: #ea3400;}
-.btn-my-cabinet:active{background-color: #811f00;}
+.btn-my-cabinet:hover{background-color: #0a8e00;}
+.btn-my-cabinet:active{background-color: #097800;}
 .search_item_list{padding-top: 15px;padding-bottom: 10px;}
 #content_wrapper{
     background-color: #f2f2f2;
@@ -92,5 +93,9 @@ a:hover > .search_item_list_header{
 
     border-radius: 0;
     background-color: #0f4fa8;;
-
+}
+.form-group label{
+    font-size: 90%;
+    font-weight: 500;
+    margin-bottom: 3px;
 }

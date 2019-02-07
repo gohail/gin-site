@@ -73,6 +73,7 @@ func initializeRoutes() {
 
 		// Handle POST request /users/myinfo receive ExtraUserInfo{}
 		userRouters.POST("/myinfo", controllers.PostSelfInfo)
+
 	}
 
 	adminRouters := router.Group("/admin")
