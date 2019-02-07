@@ -94,6 +94,8 @@ a:hover > .search_item_list_header{
     border-radius: 0;
     background-color: #0f4fa8;;
 }
+.dropdown-menu {border-radius:0; top: 2px;
+    font-size: 100%;}
 .form-group label{
     font-size: 90%;
     font-weight: 500;
